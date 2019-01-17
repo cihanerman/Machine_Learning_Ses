@@ -11,6 +11,8 @@ Created on Thu Jan 17 21:08:23 2019
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 
 # data loading
 data = pd.read_csv('maaslar.csv')
@@ -19,8 +21,6 @@ x = data.iloc[:,1:2].values
 y = data.iloc[:,2:].values
 
 # linear regression 
-from sklearn.linear_model import LinearRegression
-
 lr = LinearRegression().fit(x, y)
 
 plt.scatter(x, y, color = 'red')
@@ -28,7 +28,6 @@ plt.plot(x, lr.predict(x), color = 'blue')
 plt.show()
 
 # plynomal regression degree = 2
-from sklearn.preprocessing import PolynomialFeatures
 pr = PolynomialFeatures(degree=2)
 x_poly = pr.fit_transform(x)
 
