@@ -1,2 +1,2 @@
 # Machine_Learning_Ses
-Anaconda, python 3, vs code
+Anaconda, python 3, spyder
