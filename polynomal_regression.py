@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import r2_score
 
 # data loading
 data = pd.read_csv('maaslar.csv')
@@ -26,7 +27,7 @@ lr = LinearRegression().fit(x, y)
 plt.scatter(x, y, color = 'red')
 plt.plot(x, lr.predict(x), color = 'blue')
 plt.show()
-
+print('r2 score: ',r2_score(y,lr.predict(x)))
 # plynomal regression degree = 2
 pr = PolynomialFeatures(degree=2)
 x_poly = pr.fit_transform(x)
@@ -50,3 +51,5 @@ plt.show()
 # predicts
 print(lr.predict([[11],[6.6]]))
 print(lr2.predict(pr.fit_transform([[11],[6.6]])))
+
+print('r2 score: ',r2_score(y,lr2.predict(pr.fit_transform(x))))

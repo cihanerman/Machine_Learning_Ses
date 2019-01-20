@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
+from sklearn.metrics import r2_score
 
 # data loading
 data = pd.read_csv('maaslar.csv')
@@ -40,9 +41,12 @@ plt.show()
 # predicts
 print(sr_r.predict([[11]]))
 print(sr_r.predict([[6.6]]))
+print('sr_r r2 score: ',r2_score(y_test,sr_r.predict(x_train)))
 
 print(sr_l.predict([[11]]))
 print(sr_l.predict([[6.6]]))
+print('sr_l r2 score: ',r2_score(y_test,sr_l.predict(x_train)))
 
 print(sr_p.predict([[11]]))
 print(sr_p.predict([[6.6]]))
+print('sr_p r2 score: ',r2_score(y_test,sr_p.predict(x_train)))
