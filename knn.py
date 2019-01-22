@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan 21 21:20:21 2019
+Created on Tue Jan 22 21:36:40 2019
 
 @author: cihanerman
 """
+
 # import library
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import Imputer, LabelEncoder, OneHotEncoder, StandardScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
 import warnings
 warnings.filterwarnings('ignore')
@@ -27,13 +28,13 @@ sc = StandardScaler()
 X_train = sc.fit_transform(x_train)
 X_test = sc.transform(x_test)
 
-logr = LogisticRegression(random_state=0)
-logr.fit(X_train, y_train)
-
-predict = logr.predict(X_test)
-print(predict)
-print(y_test)
-
-
-cm = confusion_matrix(y_test,predict)
+knn = KNeighborsClassifier(n_neighbors=1, metric='minkowski').fit(X_train,y_train)
+"""
+n_neighbors değeri veriye göre seçilmelidir. Bu veri setinde düşürmek daha doğru sonuçlar veriyor. Default değeri 5 dir.
+metric değeri oluşturulacak modele göre seçilmelidir. Default değeri minkowski dir.
+"""
+print(knn.predict(X_test))
+print(y_test[0])
+print(y_test[0] == knn.predict(X_test))
+cm = confusion_matrix(y_test,knn.predict(X_test))
 print(cm)
