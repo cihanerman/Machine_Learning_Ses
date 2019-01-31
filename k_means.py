@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 # data loading
 data = pd.read_csv('musteriler.csv')
 
-x = data.iloc[:,3:]
+x = data.iloc[:,3:].values
 
 kmeans = KMeans(n_clusters=3,init='k-means++',random_state=0).fit(x)
 print(kmeans.cluster_centers_)
