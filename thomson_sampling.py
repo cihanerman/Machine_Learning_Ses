@@ -5,8 +5,8 @@ Created on Sun Feb  3 18:28:43 2019
 
 @author: cihanerman
 """
-
-# reinforced learning
+# thomson ucb'den daha iyi sonuç veriyor
+# reinforced learning(Pekiştirmeli öğrenme)
 # import library
 import pandas as pd
 import numpy as np
